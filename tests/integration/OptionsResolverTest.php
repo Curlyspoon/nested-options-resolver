@@ -1,7 +1,7 @@
 <?php
 
-use PHPUnit\Framework\TestCase as PhpUnitTestCase;
 use Curlyspoon\NestedOptionsResolver\OptionsResolver;
+use PHPUnit\Framework\TestCase as PhpUnitTestCase;
 
 class OptionsResolverTest extends PhpUnitTestCase
 {
@@ -72,7 +72,7 @@ class OptionsResolverTest extends PhpUnitTestCase
                 'images',
             ],
             'types' => [
-                'name' => 'string',
+                'name'   => 'string',
                 'images' => 'array[]',
             ],
             'nested' => [
@@ -86,7 +86,7 @@ class OptionsResolverTest extends PhpUnitTestCase
                     ],
                     'types' => [
                         'source' => 'string',
-                        'size' => 'string',
+                        'size'   => 'string',
                     ],
                     'values' => [
                         'size' => [
@@ -101,7 +101,7 @@ class OptionsResolverTest extends PhpUnitTestCase
         ]);
 
         $resolved = $resolver->resolve([
-            'name' => 'Jane Doe',
+            'name'   => 'Jane Doe',
             'images' => [
                 [
                     'source' => 'https://example.com/image.jpg',
