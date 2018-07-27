@@ -1,0 +1,30 @@
+{
+    "name": "curlyspoon/nested-options-resolver",
+    "description": "",
+    "keywords": ["curlyspoon"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tom Witkowski",
+            "email": "dev.gummibeer@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1.3",
+        "symfony/options-resolver": "^4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~7.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Curlyspoon\\NestedOptionsResolver\\": "src"
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}

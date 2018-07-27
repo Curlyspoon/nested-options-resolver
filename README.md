@@ -1,1 +1,1 @@
-# nested-options-resolver
+# nested OptionsResolver

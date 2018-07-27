@@ -1,0 +1,15 @@
+checks:
+  php: true
+
+filter:
+  paths:
+    - src/*
+  excluded_paths:
+    - tests/*
+
+build:
+  environment:
+    php: 7.1.3
+  dependencies:
+    after:
+      - composer dump-autoload -o
