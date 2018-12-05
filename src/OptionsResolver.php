@@ -15,31 +15,12 @@ class OptionsResolver extends SymfonyOptionsResolver
     {
         $resolver = new static();
 
-        if (!empty($config['defaults'])) {
-            $resolver->setDefaults($config['defaults']);
-        }
-
-        if (!empty($config['required'])) {
-            $resolver->setRequired($config['required']);
-        }
-
-        if (!empty($config['types'])) {
-            foreach ($config['types'] as $option => $types) {
-                $resolver->setAllowedTypes($option, $types);
-            }
-        }
-
-        if (!empty($config['values'])) {
-            foreach ($config['values'] as $option => $values) {
-                $resolver->setAllowedValues($option, $values);
-            }
-        }
-
-        if (!empty($config['nested'])) {
-            foreach ($config['nested'] as $option => $nestedConfig) {
-                $resolver->setNested($option, static::make($nestedConfig));
-            }
-        }
+        $resolver
+            ->loadConfigDefaults($config)
+            ->loadConfigRequired($config)
+            ->loadConfigTypes($config)
+            ->loadConfigValues($config)
+            ->loadConfigNested($config);
 
         return $resolver;
     }
@@ -77,5 +58,56 @@ class OptionsResolver extends SymfonyOptionsResolver
         }
 
         return $resolved;
+    }
+
+    protected function loadConfigDefaults(array $config): OptionsResolver
+    {
+        if (!empty($config['defaults'])) {
+            $this->setDefaults($config['defaults']);
+        }
+
+        return $this;
+    }
+
+    protected function loadConfigRequired(array $config): OptionsResolver
+    {
+        if (!empty($config['required'])) {
+            $this->setRequired($config['required']);
+        }
+
+        return $this;
+    }
+
+    protected function loadConfigTypes(array $config): OptionsResolver
+    {
+        if (!empty($config['types'])) {
+            foreach ($config['types'] as $option => $types) {
+                $this->setAllowedTypes($option, $types);
+            }
+        }
+
+        return $this;
+    }
+
+    protected function loadConfigValues(array $config): OptionsResolver
+    {
+        if (!empty($config['values'])) {
+            foreach ($config['values'] as $option => $values) {
+                $this->setAllowedValues($option, $values);
+            }
+        }
+
+        return $this;
+    }
+
+    protected function loadConfigNested(array $config): OptionsResolver
+    {
+        if (!empty($config['nested'])) {
+            foreach ($config['nested'] as $option => $nestedConfig) {
+                $this->setNested($option, static::make($nestedConfig));
+            }
+        }
+
+        return $this;
     }
 }
