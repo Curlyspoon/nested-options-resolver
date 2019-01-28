@@ -17,6 +17,9 @@
     "require-dev": {
         "phpunit/phpunit": "~7.0.0"
     },
+    "conflict": {
+        "symfony/options-resolver": ">=4.2"
+    },
     "autoload": {
         "psr-4": {
             "Curlyspoon\\NestedOptionsResolver\\": "src"
